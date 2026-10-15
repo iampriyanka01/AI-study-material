@@ -1,0 +1,27 @@
+Analyze the following recipes and provide nutritional insights for each one. 
+
+Recipes to analyze:
+{recipes}
+
+For each recipe, provide:
+- Difficulty level (easy, medium, hard)
+- Estimated cooking time
+- Approximate calories per serving
+- Main nutrients (protein, carbs, fats, fiber, vitamins)
+- Dietary tags (vegetarian, vegan, gluten-free, low-carb, etc.)
+
+Return your analysis in JSON format like this:
+{{
+  "analysis": [
+    {{
+      "recipe_name": "Recipe Name",
+      "difficulty": "easy",
+      "cooking_time": "15 minutes", 
+      "calories_per_serving": "300",
+      "main_nutrients": ["protein", "carbs"],
+      "dietary_tags": ["vegetarian"]
+    }}
+  ]
+}}
+
+Be practical and realistic in your estimates.

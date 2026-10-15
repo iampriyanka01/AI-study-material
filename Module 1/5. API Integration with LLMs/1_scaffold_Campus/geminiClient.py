@@ -1,0 +1,48 @@
+from typing import Optional
+from google import genai
+from utils.config import SYSTEM_PROMPT
+import json
+import os
+
+
+class GeminiClient:
+    """Client for interacting with Gemini API for campus event Q&A."""
+    
+    def __init__(self, api_key: Optional[str] = None):
+        # TODO: Initialize the API key
+        self.api_key = api_key or os.getenv("GEMINI_API_KEY")
+
+        # TODO: Raise ValueError if no API key found
+        if not self.api_key:
+            raise ValueError("GEMINI_API_KEY not found in environment variables.")
+
+        # TODO: Initialize the genai Client
+        self.client = genai.Client(api_key=self.api_key)
+        
+    
+    def call_api(self, user_query: str) -> str:
+        """Call Gemini API with system prompt and user query."""
+        # TODO: Format the prompt with user query
+        full_prompt = SYSTEM_PROMPT.format(user_query=user_query)
+        
+        # TODO: Make API call to llm
+        try:
+            response = self.client.models.generate_content(
+                 model="gemini-3.6-flash",
+                 contents=full_prompt
+              )
+        except Exception as e:
+            return f"An error occurred while processing your request: {str(e)}"
+
+        # TODO: Handle empty or None response
+        if response.text is None or response.text.strip() == "":
+            return "I didn't receive a valid response. Please try again."
+        
+        # TODO: Return the response text
+        cleaned = response.text.replace("```json", "").replace("```python", "").replace("```", "").strip()
+
+        # Try parsing JSON, but fall back to plain text
+        try:
+           return json.loads(cleaned)
+        except json.JSONDecodeError:
+           return cleaned      
