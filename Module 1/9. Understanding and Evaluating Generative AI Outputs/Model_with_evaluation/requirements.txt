@@ -1,0 +1,8 @@
+# Streamlit web UI
+streamlit>=1.32.0
+
+# Google's unified Gen AI SDK (provides `from google import genai`)
+google-genai>=0.3.0
+
+# Loads GEMINI_API_KEY from a local .env file instead of hardcoding it
+python-dotenv>=1.0.0
