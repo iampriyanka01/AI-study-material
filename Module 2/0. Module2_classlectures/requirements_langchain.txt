@@ -1,0 +1,12 @@
+langchain>=1.0
+langchain-classic
+langchain-core
+langchain-text-splitters
+langchain-google-genai
+langchain-pinecone
+langchain-community
+pinecone
+pinecone-text
+beautifulsoup4
+lark
+python-dotenv

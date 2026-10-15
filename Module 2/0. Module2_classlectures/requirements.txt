@@ -1,0 +1,47 @@
+# Requirements for Chunking
+nltk
+sentence-transformers
+scikit-learn
+numpy
+
+# Requirements for FAISS
+faiss-cpu
+sentence-transformers
+numpy
+
+# Requirements for:Pinecone vector database
+#   - vector_search_faiss_pinecone.py   (FAISS local demo + Pinecone cloud demo)
+#   - dilsevector_matchmaking_search.py (Pinecone matchmaking search demo)
+#
+# Install with:
+#   pip install -r requirements.txt
+
+# --- Core ML / embeddings ---------------------------------------------------
+sentence-transformers>=2.7.0     # generates text embeddings (used by vector_search_faiss_pinecone.py)
+numpy>=1.26.0                    # numerical arrays, used by both scripts
+
+# --- Vector search engines ---------------------------------------------------
+faiss-cpu>=1.8.0                 # local, in-memory vector index library (no GPU required)
+pinecone>=5.0.0                  # Pinecone cloud vector database client (v5+ API used: pc.Index(), pc.search(), integrated embedding, etc.)
+
+# --- Convenience -------------------------------------------------------------
+python-dotenv>=1.0.0             # loads PINECONE_API_KEY from a local .env file instead of hardcoding it
+
+
+# Requirements for ragpipeline.py
+#
+# Install with:
+#   pip install -r requirements.txt
+
+# --- Core ML / embeddings ---------------------------------------------------
+sentence-transformers>=2.7.0     # generates text embeddings (paraphrase-MiniLM-L6-v2)
+
+# --- Language model + vector database ---------------------------------------
+google-generativeai>=0.7.0       # client for Google's Gemini language model
+pinecone>=5.0.0                  # Pinecone cloud vector database client (v5+ keyword-only API)
+
+# --- Reading the source HTML coffee pages ------------------------------------
+beautifulsoup4>=4.12.0           # parses the coffee_pages/*.html files into sections
+
+# --- Convenience -------------------------------------------------------------
+python-dotenv>=1.0.0             # loads GOOGLE_API_KEY / PINECONE_API_KEY from a local .env file
